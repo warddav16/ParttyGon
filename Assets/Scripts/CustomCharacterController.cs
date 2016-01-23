@@ -47,6 +47,9 @@ public class CustomCharacterController : NetworkBehaviour
 
     void Start()
     {
+        if (!isLocalPlayer)
+            return;
+
         GameObject camObject = Instantiate(CameraControllerPrefab) as GameObject;
         cameraControllerPrefab = camObject.GetComponent<CameraController>();
         cameraControllerPrefab.Target = gameObject;
