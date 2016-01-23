@@ -152,15 +152,6 @@ public class GameManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdPlayerInfected()
-    {
-        if (++numInfected >= players.Length)
-        {
-            CmdRoundEnd();
-        }
-    }
-
-    [Command]
     void CmdInfectRandomPlayer()
     {
         int playerToInfect = -1;
@@ -176,6 +167,10 @@ public class GameManager : NetworkBehaviour
     public void CmdPlayerInfected(string awardPlayer)
     {
         RpcSendUpdatedScores(awardPlayer, PlayerInfectedPointsAward);
+        if (++numInfected >= players.Length)
+        {
+            CmdRoundEnd();
+        }
     }
     [ClientRpc]
     private void RpcSendUpdatedScores(string player, int score)
