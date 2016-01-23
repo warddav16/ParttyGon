@@ -106,7 +106,7 @@ ModelImporter:
     4300028: bicepL
     4300030: forearmL
     4300032: handL
-    7400000: Take 001
+    7400000: Polydude_Punch
     9500000: //RootNode
     13700000: bicepL
     13700002: bicepR
@@ -145,7 +145,119 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Polydude_Punch
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bicepL
+        weight: 1
+      - path: bicepR
+        weight: 1
+      - path: chest
+        weight: 1
+      - path: footL
+        weight: 1
+      - path: footR
+        weight: 1
+      - path: forearmL
+        weight: 1
+      - path: forearmR
+        weight: 1
+      - path: handL
+        weight: 1
+      - path: handR
+        weight: 1
+      - path: head
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/joint2
+        weight: 1
+      - path: root/joint2/joint22
+        weight: 1
+      - path: root/joint2/joint22/joint3
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint4
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint4/joint21
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6/joint7
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6/joint7/joint20
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9/joint10
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9/joint10/joint19
+        weight: 1
+      - path: root/joint11
+        weight: 1
+      - path: root/joint11/joint12
+        weight: 1
+      - path: root/joint11/joint12/joint13
+        weight: 1
+      - path: root/joint11/joint12/joint13/joint15
+        weight: 1
+      - path: root/joint11/joint12/joint13/joint15/joint16
+        weight: 1
+      - path: root/joint18
+        weight: 1
+      - path: root/joint18/joint12 1
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1/joint17
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1/joint17/joint16 1
+        weight: 1
+      - path: shinL
+        weight: 1
+      - path: shinR
+        weight: 1
+      - path: shoulderL
+        weight: 1
+      - path: shoulderR
+        weight: 1
+      - path: thighL
+        weight: 1
+      - path: thighR
+        weight: 1
+      - path: waist
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
