@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: df4b89423bd9f5f428173bc0181f00f1
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bicepL
+    100002: bicepR
+    100004: chest
+    100006: footL
+    100008: footR
+    100010: forearmL
+    100012: forearmR
+    100014: handL
+    100016: handR
+    100018: head
+    100020: joint10
+    100022: joint11
+    100024: joint12
+    100026: joint12 1
+    100028: joint13
+    100030: joint13 1
+    100032: joint15
+    100034: joint16
+    100036: joint16 1
+    100038: joint17
+    100040: joint18
+    100042: joint19
+    100044: joint2
+    100046: joint20
+    100048: joint21
+    100050: joint22
+    100052: joint3
+    100054: joint4
+    100056: joint5
+    100058: joint6
+    100060: joint7
+    100062: joint8
+    100064: joint9
+    100066: //RootNode
+    100068: root
+    100070: shinL
+    100072: shinR
+    100074: shoulderL
+    100076: shoulderR
+    100078: thighL
+    100080: thighR
+    100082: waist
+    400000: bicepL
+    400002: bicepR
+    400004: chest
+    400006: footL
+    400008: footR
+    400010: forearmL
+    400012: forearmR
+    400014: handL
+    400016: handR
+    400018: head
+    400020: joint10
+    400022: joint11
+    400024: joint12
+    400026: joint12 1
+    400028: joint13
+    400030: joint13 1
+    400032: joint15
+    400034: joint16
+    400036: joint16 1
+    400038: joint17
+    400040: joint18
+    400042: joint19
+    400044: joint2
+    400046: joint20
+    400048: joint21
+    400050: joint22
+    400052: joint3
+    400054: joint4
+    400056: joint5
+    400058: joint6
+    400060: joint7
+    400062: joint8
+    400064: joint9
+    400066: //RootNode
+    400068: root
+    400070: shinL
+    400072: shinR
+    400074: shoulderL
+    400076: shoulderR
+    400078: thighL
+    400080: thighR
+    400082: waist
+    4300000: chest
+    4300002: head
+    4300004: waist
+    4300006: shoulderL
+    4300008: bicepR
+    4300010: forearmR
+    4300012: handR
+    4300014: shoulderR
+    4300016: shinL
+    4300018: thighL
+    4300020: footL
+    4300022: shinR
+    4300024: thighR
+    4300026: footR
+    4300028: bicepL
+    4300030: forearmL
+    4300032: handL
+    7400000: polydude_run
+    9500000: //RootNode
+    13700000: bicepL
+    13700002: bicepR
+    13700004: chest
+    13700006: footL
+    13700008: footR
+    13700010: forearmL
+    13700012: forearmR
+    13700014: handL
+    13700016: handR
+    13700018: head
+    13700020: shinL
+    13700022: shinR
+    13700024: shoulderL
+    13700026: shoulderR
+    13700028: thighL
+    13700030: thighR
+    13700032: waist
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: polydude_run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bicepL
+        weight: 1
+      - path: bicepR
+        weight: 1
+      - path: chest
+        weight: 1
+      - path: footL
+        weight: 1
+      - path: footR
+        weight: 1
+      - path: forearmL
+        weight: 1
+      - path: forearmR
+        weight: 1
+      - path: handL
+        weight: 1
+      - path: handR
+        weight: 1
+      - path: head
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/joint2
+        weight: 1
+      - path: root/joint2/joint22
+        weight: 1
+      - path: root/joint2/joint22/joint3
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint4
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint4/joint21
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6/joint7
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint5/joint6/joint7/joint20
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9/joint10
+        weight: 1
+      - path: root/joint2/joint22/joint3/joint8/joint9/joint10/joint19
+        weight: 1
+      - path: root/joint11
+        weight: 1
+      - path: root/joint11/joint12
+        weight: 1
+      - path: root/joint11/joint12/joint13
+        weight: 1
+      - path: root/joint11/joint12/joint13/joint15
+        weight: 1
+      - path: root/joint11/joint12/joint13/joint15/joint16
+        weight: 1
+      - path: root/joint18
+        weight: 1
+      - path: root/joint18/joint12 1
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1/joint17
+        weight: 1
+      - path: root/joint18/joint12 1/joint13 1/joint17/joint16 1
+        weight: 1
+      - path: shinL
+        weight: 1
+      - path: shinR
+        weight: 1
+      - path: shoulderL
+        weight: 1
+      - path: shoulderR
+        weight: 1
+      - path: thighL
+        weight: 1
+      - path: thighR
+        weight: 1
+      - path: waist
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
