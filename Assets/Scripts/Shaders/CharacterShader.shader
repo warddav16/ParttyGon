@@ -3,7 +3,7 @@
 Shader "Custom/CharacterShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
-		_LineWidth("Line Width", float) = 0.1
+		_LinesTex("Glow Lines", 2D) = "white" {}
 	}
 	SubShader{
 		Pass {
@@ -43,10 +43,11 @@ Shader "Custom/CharacterShader" {
 			}
 
 			float4 _Color;
-			float _LineWidth;
+			float _LineTex;
 
 			float4 frag(v2f i) : COLOR
 			{
+				fixed4 c = tex2D(_LinesTex, IN.uv_MainTex) * _Color;
 				float4 outColor = float4( 0.0,0.0,0.0,0.0 );
 				if (i.texcoord1.x < _LineWidth ||
 					i.texcoord1.y < _LineWidth)

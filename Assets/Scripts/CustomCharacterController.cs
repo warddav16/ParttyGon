@@ -5,18 +5,19 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(Rigidbody))]
 public class CustomCharacterController : NetworkBehaviour 
 {
-    private float _moveSpeed = 10.0f;
-    public float walkSpeed = 10.0f;
-    public float runSpeed = 20.0f;
+    public float WalkSpeed = 10.0f;
+    public float RunSpeed = 20.0f;
     public float TurnSpeed = 20.0f;
     public float runDuration = 3.0f;
-    public float coolDownTime = 3.0f;
     public enum MovementState { run, idle, walk };
     public MovementState moveState = MovementState.idle;
     public float runtimer = 0.0f;
     private Rigidbody _rigidbody;
-    private int coolDownNegator = 1;
-    private bool CanMove = true;
+    private bool canMove = true;
+    public float Acceleration = 3.0f;
+    bool isRunning = false;
+
+    public bool CanMove() { return canMove; }
 
     public CameraController cameraController;
 
@@ -29,8 +30,14 @@ public class CustomCharacterController : NetworkBehaviour
     [ClientRpc]
     public void RpcSetCanMove(bool canMove)
     {
-        CanMove = canMove;
+        this.canMove = canMove;
     }
+
+    public void SetRunning(bool isRunning)
+    {
+        this.isRunning = isRunning;
+    }
+
 
     void Awake()
     {
@@ -39,27 +46,11 @@ public class CustomCharacterController : NetworkBehaviour
 
     void Update()
     {
-        //No input handling if not local player
-        if (!isLocalPlayer || !CanMove)
+        //No input handling if not local player or cannot move
+        if (!isLocalPlayer || !canMove)
             return;
-        if(_rigidbody.velocity.magnitude > 0)
-        {
-            moveState = _moveSpeed > walkSpeed ? MovementState.run : MovementState.walk;
-        }
-        else
-        {
-            moveState = MovementState.idle;
-        }
-         //runtimer += moveState == MovementState.run ? Time.deltaTime : -Time.deltaTime;
-        runtimer += Time.deltaTime * coolDownNegator;
-        if(runtimer >= runDuration)
-        {
-            StopRun();
-        }
-        else if(runtimer < 0)
-        {
-            runtimer = 0;
-        }
+
+
     }
 
     public void MoveCharacter( Vector3 dir )
@@ -67,36 +58,12 @@ public class CustomCharacterController : NetworkBehaviour
         //TODO: Smoothly move the forward towards dir
         if (dir != Vector3.zero)
         {
-            Vector3 toCamera = transform.position - cameraController.transform.position;
-            toCamera.Normalize();
-            toCamera.y = 0;  
-            dir += toCamera;
+            cameraController.transform.TransformDirection(dir);
+            dir.y = 0;
             dir.Normalize();
             transform.forward = dir;
-            _rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * _moveSpeed);
+            float speed = isRunning ? RunSpeed : WalkSpeed;
+            _rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
-    }
-
-    public void RunCharacter()
-    {
-        coolDownNegator = 1;
-        if (runtimer <= runDuration)
-        {
-            _moveSpeed = runSpeed; //TODO: speed change smoothly
-        }
-        else
-            StopRun();
-    }
-
-    private void StopRun()
-    {
-        _moveSpeed = walkSpeed; //Todo stop smoothly
-    }
-
-    public void RunCoolDown()
-    {
-        coolDownNegator = -1;
-        runtimer = coolDownTime;
-        StopRun();
     }
 }

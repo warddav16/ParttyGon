@@ -14,21 +14,15 @@ public class KeyboardController : NetworkBehaviour
     void Update()
     {
         //No input handling if not local player
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || !_controller.CanMove())
             return;
         Vector3 dir = Vector3.zero;
         dir.z += Input.GetAxis("Vertical");
         dir.x += Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            _controller.RunCharacter();
 
-                
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            _controller.RunCoolDown();
-        }
+
+        _controller.SetRunning(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
+
         _controller.MoveCharacter(dir);
     }
 }

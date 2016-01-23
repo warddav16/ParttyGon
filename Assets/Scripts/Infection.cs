@@ -15,9 +15,11 @@ public class Infection : NetworkBehaviour
         originalColor = protoColorChange.material.color;
     }
 
-
     void OnCollisionEnter(Collision col)
     {
+        if (!isLocalPlayer)
+            return;
+
         var target = col.gameObject.GetComponent<Infection>();
         if (target != null)
         {

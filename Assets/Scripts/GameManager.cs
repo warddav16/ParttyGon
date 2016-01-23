@@ -24,20 +24,44 @@ public class GameManager : NetworkBehaviour
     public float RoundTime = 120.0f;
     public int TotalRounds = 2;
     public int MaxPlayers = 8;
+
+    [SyncVar]
     private int numInfected = 0;
+
+    [SyncVar]
     private int currentRound = 0;
+    public int GetCurrentRound() { return currentRound; }
 
     public int PlayerInfectedPointsAward = 1;
     public int RoundSurvivalPointsAward = 5;
 
+    [SyncVar]
     private float roundTimer = 0;
+    [SyncVar]
     private bool isInRound = false;
-
+    
     private GameObject[] players;
-    private int[] scores;
+
+    private Dictionary<string, int> scores = new Dictionary<string, int>();
+    [Command]
+    public void CmdRegisterPlayer(string id)
+    {
+        scores.Add(id, 0);
+    }
+
+    public int GetScore(string id)
+    {
+        int outScore = -1;
+        if(scores.TryGetValue( id, out outScore))
+        {
+            return outScore;
+        }
+        return -1;
+    }
 
     public Transform[] SpawnPoints;
 
+    [SyncVar]
     private int prevInfectedPlayer = -1;
 
     // Use this for initialization
@@ -60,11 +84,11 @@ public class GameManager : NetworkBehaviour
 
     void Start()
     {
+        players = GameObject.FindObjectsOfType<CustomCharacterController>().Select(x => x.gameObject).ToArray();
+
         if (!isServer)
             return;
 
-        players = GameObject.FindObjectsOfType<CustomCharacterController>().Select(x => x.gameObject).ToArray();
-        scores = new int[players.Length];
         CmdRoundStart();
     }
 
