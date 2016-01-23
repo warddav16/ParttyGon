@@ -19,7 +19,8 @@ public class CustomCharacterController : NetworkBehaviour
 
     public bool CanMove() { return canMove; }
 
-    public CameraController cameraController;
+    public GameObject CameraControllerPrefab;
+    private CameraController cameraControllerPrefab;
 
     [ClientRpc]
     public void RpcSetPosition(Vector3 pos)
@@ -44,6 +45,13 @@ public class CustomCharacterController : NetworkBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    void Start()
+    {
+        GameObject camObject = Instantiate(CameraControllerPrefab) as GameObject;
+        cameraControllerPrefab = camObject.GetComponent<CameraController>();
+        cameraControllerPrefab.Target = gameObject;
+    }
+
     void Update()
     {
         //No input handling if not local player or cannot move
@@ -58,7 +66,7 @@ public class CustomCharacterController : NetworkBehaviour
         //TODO: Smoothly move the forward towards dir
         if (dir != Vector3.zero)
         {
-            cameraController.transform.TransformDirection(dir);
+            cameraControllerPrefab.transform.TransformDirection(dir);
             dir.y = 0;
             dir.Normalize();
             transform.forward = dir;

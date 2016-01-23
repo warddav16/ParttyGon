@@ -5,18 +5,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     public GameObject Target;
-    private Vector3 OffsetVector = Vector3.zero;
-
-    void Awake()
-    {
-        OffsetVector = transform.position - Target.transform.position;
-        transform.parent = null;
-    }
-
-    void Start()
-    {
-        
-    }
+    public  Vector3 OffsetVector = Vector3.zero;
 
     void FixedUpdate()
     {
