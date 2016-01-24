@@ -39,7 +39,7 @@ public class GameManager : NetworkBehaviour
     private float roundTimer = 0;
     [SyncVar]
     private bool isInRound = false;
-    
+
     private GameObject[] players;
 
     private Dictionary<string, int> scores = new Dictionary<string, int>();
@@ -52,11 +52,15 @@ public class GameManager : NetworkBehaviour
     public int GetScore(string id)
     {
         int outScore = -1;
-        if(scores.TryGetValue( id, out outScore))
+        if (scores.TryGetValue(id, out outScore))
         {
             return outScore;
         }
         return -1;
+    }
+    private void SetScore(string player, int score)
+    {
+        scores[player] = score;
     }
 
     public Transform[] SpawnPoints;
@@ -95,7 +99,7 @@ public class GameManager : NetworkBehaviour
     [Command]
     void CmdRoundStart()
     {
-        if(++currentRound > TotalRounds)
+        if (++currentRound > TotalRounds)
         {
             CmdEndGame();
             return;
@@ -115,7 +119,7 @@ public class GameManager : NetworkBehaviour
         CmdInfectRandomPlayer();
         isInRound = true;
     }
-    
+
     [Command]
     void CmdRoundEnd()
     {
@@ -129,7 +133,7 @@ public class GameManager : NetworkBehaviour
     [Command]
     void CmdEndGame()
     {
-        
+
     }
 
     void Update()
@@ -146,15 +150,6 @@ public class GameManager : NetworkBehaviour
             }
         }
     }
-    
-    [Command]
-    public void CmdPlayerInfected()
-    {
-        if (++numInfected >= players.Length)
-        {
-            CmdRoundEnd();
-        }
-    }
 
     [Command]
     void CmdInfectRandomPlayer()
@@ -167,5 +162,19 @@ public class GameManager : NetworkBehaviour
         players[playerToInfect].GetComponent<Infection>().RpcSetInfect(players[playerToInfect]);
         numInfected++;
         prevInfectedPlayer = playerToInfect;
-    }    
+    }
+    [Command]
+    public void CmdPlayerInfected(string awardPlayer)
+    {
+        RpcSendUpdatedScores(awardPlayer, PlayerInfectedPointsAward);
+        if (++numInfected >= players.Length)
+        {
+            CmdRoundEnd();
+        }
+    }
+    [ClientRpc]
+    private void RpcSendUpdatedScores(string player, int score)
+    {
+        SetScore(player, GetScore(player) + score);
+    }
 }

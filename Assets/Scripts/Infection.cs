@@ -25,6 +25,7 @@ public class Infection : NetworkBehaviour
         {
             if (isInfected && !target.isInfected)
             {
+                GameManager.instance.CmdPlayerInfected(UserId.GetId());
                 target.RpcSetInfect(true);
             }
         }
