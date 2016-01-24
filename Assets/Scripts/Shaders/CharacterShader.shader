@@ -4,13 +4,13 @@ Shader "Custom/CharacterShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_LinesTex("Glow Lines", 2D) = "white" {}
+		_Shine("Shine", Range(1,50)) = 1.0
 	}
 	SubShader{
 		Pass {
 			Tags{ "RenderType" = "Transparent" }
 			LOD 200
 			ZWrite Off
-			Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
 			#pragma vertex vert
@@ -25,48 +25,28 @@ Shader "Custom/CharacterShader" {
 			struct appdata {
 				float4 vertex : POSITION;
 				float4 texcoord1 : TEXCOORD1;
-				float4 color : COLOR;
 			};
 
 			struct v2f {
 				float4 pos : POSITION;
 				float4 texcoord1 : TEXCOORD1;
-				float4 color : COLOR;
 			};
 
 			v2f vert(appdata v) {
 				v2f o;
 				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.texcoord1 = v.texcoord1;
-				o.color = v.color;
 				return o;
 			}
 
 			float4 _Color;
-			float _LineTex;
+			sampler2D _LinesTex;
+			float _Shine;
 
 			float4 frag(v2f i) : COLOR
 			{
-				fixed4 c = tex2D(_LinesTex, IN.uv_MainTex) * _Color;
-				float4 outColor = float4( 0.0,0.0,0.0,0.0 );
-				if (i.texcoord1.x < _LineWidth ||
-					i.texcoord1.y < _LineWidth)
-				{
-					outColor =  _Color;
-				}
-
-				else if ((i.texcoord1.x - i.texcoord1.y) < _LineWidth &&
-					(i.texcoord1.y - i.texcoord1.x) < _LineWidth)
-				{
-					outColor = _Color;
-				}
-				else
-				{
-					outColor = float4(0.0, 0.0, 0.0, 0.0);
-				}
-
-				outColor.a = any(outColor.xyz > float3(0, 0, 0));
-
+				fixed4 c = tex2D(_LinesTex, i.texcoord1);
+				float4 outColor = lerp( float4( 0.0,0.0,0.0,0.0 ), _Color, c.a ) * _Shine;
 				return outColor;
 			}
 				ENDCG
