@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 public class Infection : NetworkBehaviour
 {
+    [SyncVar]
     private bool isInfected = false;
     
     public SkinnedMeshRenderer protoColorChange;

@@ -133,7 +133,7 @@ public class GameManager : NetworkBehaviour
     [Command]
     void CmdEndGame()
     {
-
+        Debug.Log("Game has ended");
     }
 
     void Update()

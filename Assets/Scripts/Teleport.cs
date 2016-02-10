@@ -11,7 +11,7 @@ public class Teleport : MonoBehaviour {
 	void Start () {
 		
 		//just store the removed teleporter point then add it back instead?
-		teleportPoints.AddRange(GameObject.FindGameObjectsWithTag ("teleporters"));
+		//teleportPoints.AddRange(GameObject.FindGameObjectsWithTag ("teleporters"));
 	}
 
 	void TeleportObject(GameObject theTeleporter, GameObject theObjectThatCollidedWithTheTeleporter ){
